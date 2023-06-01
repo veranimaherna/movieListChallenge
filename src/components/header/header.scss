@@ -1,0 +1,155 @@
+@use "../../scss/" as *;
+
+.movie-search {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+
+
+    input {
+        width: 400px;
+    }
+
+    @include mobile {
+        input {
+            width: 100px;
+            margin-left: 0.2rem;
+        }
+    }
+
+    button {
+        position: absolute;
+        right: 0;
+        top: 1px;
+        padding: 0rem;
+
+        @include mobile {
+            right: 0px;
+            top: 0px;
+        }
+    }
+}
+
+.icon-search {
+    width: 1.3rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff0000;
+
+    @include flex(center, unset);
+
+    img {
+        margin-right: 10px;
+        width: 50px;
+
+        @include mobile {
+            width: 30px;
+            margin-right: 0;
+        }
+    }
+}
+
+.btns {
+    margin-left: 1rem;
+
+}
+
+.header {
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    transition: height 0.3s ease, background-color 0.3s ease;
+
+    &.shrink {
+        height: 18vh;
+        background-color: $body-bg;
+    }
+
+    &__wrap {
+        @include flex(center, space-between);
+        height: 100%;
+        padding: 2rem 2rem;
+
+        @include mobile {
+            height: 100%;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+
+    &__nav {
+        @include flex(center, unset);
+
+        &>*~* {
+            margin-left: 2rem;
+        }
+
+        li {
+            padding: 5px 0;
+            font-weight: 700;
+            position: relative;
+            font-size: 1.5rem;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                transition: width 0.5s ease;
+                height: 2px;
+                background-color: $main-color;
+            }
+
+            &.active::after,
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        @include mobile {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5rem;
+            width: 100%;
+            background-color: $body-bg;
+            padding: 0 2rem;
+            box-shadow: $box-shadow;
+
+            @include flex(center, space-between);
+
+            &>*~* {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.header__genres{
+    color: red;
+    font-weight: 600;
+}
+
+.popular, .top{
+    margin-right: 1.5rem;
+}
+
+.popular:hover, .top:hover, .signOut:hover {
+    color: white;
+}
+
+.signOut{
+    margin-left: 1rem;
+}
+
+.user{
+    font-size: 1.1rem;
+}
